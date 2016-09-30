@@ -5,6 +5,7 @@ set -e
 # generating secrets
 BENNO_SHARED_SECRET=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 32 | head -n 1)
 BENNO_ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 12 | head -n 1)
+HOSTNAME=$(cat /etc/hostname)
 
 echo "Benno's SHARED_SECRET: $BENNO_SHARED_SECRET"
 echo "Benno's admin password: $BENNO_ADMIN_PASSWORD"
@@ -12,6 +13,7 @@ echo "Benno's admin password: $BENNO_ADMIN_PASSWORD"
 # set secret
 sed -ri -e "s/^SHARED_SECRET =.*/SHARED_SECRET = ${BENNO_SHARED_SECRET}/g" /etc/benno-web/benno.conf
 sed -ri -e "s/^    <sharedSecret>.*<\/sharedSecret>.*/    <sharedSecret>${BENNO_SHARED_SECRET}<\/sharedSecret>/g" /etc/benno/benno.xml
+sed -ri -e "s/^myhostname =.*/myhostname = ${HOSTNAME}/g" /etc/postfix/main.cf
 
 # set default admin pasword
 benno-useradmin -c admin -p $BENNO_ADMIN_PASSWORD
