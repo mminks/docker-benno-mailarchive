@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/mminks/docker-benno-mailarchive.svg)](https://microbadger.com/images/mminks/docker-benno-mailarchive "Get your own image badge on microbadger.com")
+
 # About this Repo
 
 This image runs [Benno MailArchiv](http://www.benno-mailarchiv.de/), an audit-proof and conformable to law e-mail retention system, including benno-lib, benno-core, benno-archive, benno-rest-lib, benno-rest, benno-smtp und benno-web.
@@ -87,7 +89,7 @@ docker run \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \
   -v /opt/benno/logs/apache:/var/log/apache \
-  -v <path to your benno.lic file>:/etc/benno/benno.lic \
+  -v /path/to/your/benno.lic:/etc/benno/benno.lic \
   --name benno \
   mminks/docker-benno-mailarchive
 ```
