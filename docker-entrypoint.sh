@@ -16,10 +16,18 @@ sed -ri -e "s/^    <sharedSecret>.*<\/sharedSecret>.*/    <sharedSecret>${BENNO_
 # set default admin pasword
 benno-useradmin -c admin -p $BENNO_ADMIN_PASSWORD
 
+# set owner and rights of volumes
+chown -R benno:benno /var/log/benno && chmod 770 /var/log/benno
+chown -R root:adm /var/log/apache2 && chmod 750 /var/log/apache2
+chown -R benno:benno /srv/benno/archive /srv/benno/inbox
+chmod 755 /srv/benno/archive
+chmod 770 /srv/benno/inbox
+
 # starting benno services
 /etc/init.d/benno-rest restart &>/dev/null
 /etc/init.d/benno-archive start &>/dev/null
 /etc/init.d/benno-smtp start &>/dev/null
+
 /etc/init.d/apache2 start &>/dev/null
 
 # show logs on default console
