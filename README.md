@@ -28,7 +28,7 @@ Choose target directories of your choice.
 docker run \
   -d \
   -h <fqdn> \
-  --net dockernet \
+  --net <name of your network> \
   --ip 172.18.100.1 \
   -p 8080:80 \
   -p 80443:443 \
@@ -43,15 +43,19 @@ docker run \
 
 ### Determine data required for licensing
 
+Enter your docker container with
+
 ```
 docker exec -ti benno /bin/bash
 ```
+
+and run
 
 ```
 /etc/init.d/benno-rest info
 ```
 
-This produces something like:
+This produces something like
 
 ```
 Host-Info: 172.18.100.1/benno.inoxio.de
@@ -62,15 +66,19 @@ Send this to LWsystems GmbH & Co. KG support (support@benno-mailarchiv.de) and w
 
 ## Final startup
 
+Stop your possibly running benno container and remove him, too.
+
 ```
 docker stop benno && docker rm benno
 ```
+
+Finally, fire it up with
 
 ```
 docker run \
   -d \
   -h <fqdn> \
-  --net dockernet \
+  --net <name of your network> \
   --ip 172.18.100.1 \
   -p 8080:80 \
   -p 80443:443 \
