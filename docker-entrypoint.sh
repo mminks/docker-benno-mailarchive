@@ -6,13 +6,8 @@ set -e
 BENNO_SHARED_SECRET=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 32 | head -n 1)
 BENNO_ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 12 | head -n 1)
 
-echo "###########################################################"
-echo "# Benno's SHARED_SECRET: $BENNO_SHARED_SECRET #"
-echo "# Benno's admin password: $BENNO_ADMIN_PASSWORD                    #"
-echo "###########################################################"
-echo
-echo
-echo
+echo "Benno's SHARED_SECRET: $BENNO_SHARED_SECRET"
+echo "Benno's admin password: $BENNO_ADMIN_PASSWORD"
 
 # set secret
 sed -ri -e "s/^SHARED_SECRET =.*/SHARED_SECRET = ${BENNO_SHARED_SECRET}/g" /etc/benno-web/benno.conf
