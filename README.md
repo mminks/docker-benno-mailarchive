@@ -17,7 +17,7 @@ You can choose any valid docker subnet you want.
 Next we want to prepare some directories to store data and logiles.
 
 ```
-mkdir -p /opt/benno/archive /opt/benno/inbox /opt/benno/logs/benno /opt/benno/logs/apache
+mkdir -p /opt/benno/archive /opt/benno/inbox /opt/benno/logs/benno /opt/benno/logs/apache2
 ```
 
 Choose target directories of your choice.
@@ -36,7 +36,7 @@ docker run \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \
-  -v /opt/benno/logs/apache:/var/log/apache \
+  -v /opt/benno/logs/apache2:/var/log/apache2 \
   --name benno \
   mminks/docker-benno-mailarchive
 ```

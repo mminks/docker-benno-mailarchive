@@ -41,10 +41,11 @@ COPY apache2-benno.conf /etc/apache2/sites-available/000-default.conf
 RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80
-EXPOSE 443
 EXPOSE 2500
 
 VOLUME ["/srv/benno/archive", "/srv/benno/inbox", "/var/log/apache2", "/var/log/benno"]
+
+RUN chown -R benno:benno /var/log/benno && chmod 770 /var/log/benno
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
