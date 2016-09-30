@@ -22,5 +22,5 @@ benno-useradmin -c admin -p $BENNO_ADMIN_PASSWORD
 /etc/init.d/benno-smtp start &>/dev/null
 /etc/init.d/apache2 start &>/dev/null
 
+# show logs on default console
 exec /usr/bin/tail -f /var/log/benno/*.log /var/log/apache2/*.log
-# exec "$@"

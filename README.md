@@ -100,7 +100,7 @@ docker logs -f benno
 
 ## Access benno-web
 
-Access benno-web on port 8080 (or whereever you set it up) of your docker host. The default username is **admin**. The default password will be generated during setup. Show it with
+Access benno-web on port 8080 (or whereever you set it up to - see above) of your docker host. The default username is **admin**. The default password will be generated during setup. Show it with
 
 ```
 docker logs benno | grep "Benno's admin password"
