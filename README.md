@@ -97,3 +97,7 @@ Check that everything is working properly with
 ```
 docker logs -f benno
 ```
+
+# What's next?
+
+Visit [Benno MailArchiv Wiki](https://wiki.benno-mailarchiv.de/index.php/Hauptseite) (germn only) if you want to import e-mails or something else.
