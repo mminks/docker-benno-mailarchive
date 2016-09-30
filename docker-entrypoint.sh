@@ -28,6 +28,8 @@ chmod 770 /srv/benno/inbox
 /etc/init.d/benno-archive start &>/dev/null
 /etc/init.d/benno-smtp start &>/dev/null
 
+rm -Rf /var/run/apache2
+
 /etc/init.d/apache2 start &>/dev/null
 
 # show logs on default console
