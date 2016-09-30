@@ -29,8 +29,9 @@ chmod 770 /srv/benno/inbox
 /etc/init.d/benno-smtp start &>/dev/null
 
 rm -Rf /var/run/apache2
-
 /etc/init.d/apache2 start &>/dev/null
+
+/etc/init.d/postfix restart &>/dev/null
 
 # show logs on default console
 exec /usr/bin/tail -f /var/log/benno/*.log /var/log/apache2/*.log

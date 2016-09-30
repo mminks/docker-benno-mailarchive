@@ -22,7 +22,7 @@ RUN apt-get update && \
 
 RUN apt-get install -y benno-lib benno-core benno-archive benno-rest-lib benno-rest benno-smtp
 
-RUN apt-get install -y php5-sqlite php5-curl smarty php-db php-pear sqlite libdbi-perl libdbd-sqlite3-perl sqlite3
+RUN apt-get install -y php5-sqlite php5-curl smarty php-db php-pear sqlite libdbi-perl libdbd-sqlite3-perl sqlite3 postfix
 
 # avoid "invoke-rc.d: policy-rc.d denied execution of start."
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
@@ -37,6 +37,8 @@ RUN rm -Rf /etc/apache2/conf-available/benno.conf /etc/apache2/conf-enabled/benn
 RUN rm -Rf /etc/benno-web/apache-2.2.conf /etc/benno-web/apache-2.4.conf
 
 COPY apache2-benno.conf /etc/apache2/sites-available/000-default.conf
+
+RUN apt-get autoremove --purge && apt-get autoclean
 
 RUN rm -rf /var/lib/apt/lists/*
 
