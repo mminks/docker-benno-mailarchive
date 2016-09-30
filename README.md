@@ -38,7 +38,7 @@ docker run \
   -v /opt/benno/logs/benno:/var/log/benno \
   -v /opt/benno/logs/apache:/var/log/apache \
   --name benno \
-  mminks/benno-mailarchiv
+  mminks/docker-benno-mailarchive
 ```
 
 ### Determine data required for licensing
@@ -89,7 +89,7 @@ docker run \
   -v /opt/benno/logs/apache:/var/log/apache \
   -v <path to your benno.lic file>:/etc/benno/benno.lic \
   --name benno \
-  mminks/benno-mailarchiv
+  mminks/docker-benno-mailarchive
 ```
 
 Check that everything is working properly with
