@@ -14,7 +14,7 @@ docker network create --subnet=172.18.0.0/16 <name of your network>
 
 You can choose any valid docker subnet you want.
 
-Next we want to prepare some directories to store data and logiles.
+Next we want to prepare some directories to store data and logfiles.
 
 ```
 mkdir -p /opt/benno/archive /opt/benno/inbox /opt/benno/logs/benno /opt/benno/logs/apache2
@@ -109,3 +109,7 @@ docker logs benno | grep "Benno's admin password"
 # What's next?
 
 Visit [Benno MailArchiv Wiki](https://wiki.benno-mailarchiv.de/index.php/Hauptseite) (german only) if you want to import e-mails or something else.
+
+# Contribution
+
+I welcome any kind of contribution. Fork it or contact me. I appreciate any kind of help.
