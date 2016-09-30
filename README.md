@@ -33,7 +33,6 @@ docker run \
   --net <name of your network> \
   --ip 172.18.100.1 \
   -p 8080:80 \
-  -p 80443:443 \
   -p 2500:2500 \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
@@ -83,7 +82,6 @@ docker run \
   --net <name of your network> \
   --ip 172.18.100.1 \
   -p 8080:80 \
-  -p 80443:443 \
   -p 2500:2500 \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
