@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
+ENV TZ=Europe/Berlin
 
 RUN apt-get update && \
 		apt-get install -y wget dialog
@@ -19,6 +20,9 @@ RUN apt-get update && \
 		apt-get autoremove --purge && \
 		apt-get clean && \
 		apt-get autoclean
+
+RUN echo $TZ | tee /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN apt-get install -y benno-lib benno-core benno-archive benno-rest-lib benno-rest benno-smtp
 
