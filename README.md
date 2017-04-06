@@ -46,6 +46,7 @@ docker run \
   --ip 172.18.100.1 \
   -p 8080:80 \
   -p 2500:2500 \
+  -e "MAIL_FROM=mailarchive@inoxio.de" \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \
@@ -95,6 +96,7 @@ docker run \
   --ip 172.18.100.1 \
   -p 8080:80 \
   -p 2500:2500 \
+  -e "MAIL_FROM=mailarchive@inoxio.de" \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \
@@ -109,6 +111,12 @@ Check that everything is working properly with
 ```
 docker logs -f benno
 ```
+
+## Environment variables
+
+| Name | Description |
+|---------|---------|-------------|
+| MAIL_FROM | sets MAIL_FROM in /etc/benno-web/benno.conf |
 
 ## Docker Compose
 
@@ -135,6 +143,8 @@ services:
     ports:
      - "8082:80"
      - "2500:2500"
+    environment:
+     - MAIL_FROM=mailarchive@inoxio.de
     volumes:
       - /opt/benno/archive:/srv/benno/archive
       - /opt/benno/inbox:/srv/benno/inbox
