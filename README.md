@@ -8,13 +8,13 @@ This image runs [Benno MailArchiv](http://www.benno-mailarchiv.de/), an audit-pr
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| benno-archive | 2.2.2 |  |
-| benno-core | 2.2.2 |  |
-| benno-lib | 2.2.2 |  |
-| benno-rest | 2.2.2 |  |
-| benno-rest-lib | 2.2.2 |  |
-| benno-smtp | 2.2.3 |  |
-| benno-web | 2.2.3-1 |  |
+| benno-archive | 2.2.2 | Benno MailArchiv Archiving Application |
+| benno-core | 2.2.2 | Benno MailArchiv Core |
+| benno-lib | 2.2.2 | Benno MailArchiv Core libraries from external sources |
+| benno-rest | 2.2.2 | Benno MailArchiv REST interface |
+| benno-rest-lib | 2.2.2 | Benno MailArchiv REST interface core libraries |
+| benno-smtp | 2.2.3 | Benno MailArchiv SMTP Interface |
+| benno-web | 2.2.3-1 | Benno MailArchiv web interface |
 
 # How to use this image
 
@@ -108,6 +108,42 @@ Check that everything is working properly with
 
 ```
 docker logs -f benno
+```
+
+## Docker Compose
+
+```
+version: '2.1'
+
+networks:
+  benno:
+    driver: bridge
+    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.100.0/24
+        gateway: 172.18.100.254
+
+services:
+  benno:
+    image: mminks/docker-benno-mailarchive
+    container_name: benno
+    hostname: benno
+    restart: always
+    domainname: inoxio.de
+    ports:
+     - "8082:80"
+     - "2500:2500"
+    volumes:
+      - /opt/benno/archive:/srv/benno/archive
+      - /opt/benno/inbox:/srv/benno/inbox
+      - /opt/benno/logs/benno:/var/log/benno
+      - /opt/benno/logs/apache:/var/log/apache
+      - /opt/benno/benno.lic:/etc/benno/benno.lic
+    networks:
+      benno:
+        ipv4_address: 172.18.100.1
 ```
 
 ## Access benno-web
