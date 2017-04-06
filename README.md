@@ -115,7 +115,7 @@ docker logs -f benno
 ## Environment variables
 
 | Name | Description |
-|---------|---------|-------------|
+|------|-------------|
 | MAIL_FROM | sets MAIL_FROM in /etc/benno-web/benno.conf |
 
 ## Docker Compose
