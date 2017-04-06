@@ -16,7 +16,7 @@ sed -ri -e "s/^    <sharedSecret>.*<\/sharedSecret>.*/    <sharedSecret>${BENNO_
 sed -ri -e "s/^myhostname =.*/myhostname = ${HOSTNAME}/g" /etc/postfix/main.cf
 
 # set default admin pasword
-benno-useradmin -c admin -p $BENNO_ADMIN_PASSWORD
+benno-useradmin -u admin -p $BENNO_ADMIN_PASSWORD
 
 # set owner and rights of volumes
 chown -R benno:benno /var/log/benno && chmod 770 /var/log/benno
