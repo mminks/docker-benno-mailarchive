@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -n "${MAIL_FROM}" ]; then
+  sed -ri -e "s/^MAIL_FROM.*/MAIL_FROM = ${MAIL_FROM}/g" /etc/benno-web/benno.conf
+fi
+
 # generating secrets
 BENNO_SHARED_SECRET=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 32 | head -n 1)
 BENNO_ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 12 | head -n 1)
