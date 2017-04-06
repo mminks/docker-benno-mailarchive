@@ -6,14 +6,15 @@ This image runs [Benno MailArchiv](http://www.benno-mailarchiv.de/), an audit-pr
 
 # Versions
 
-| Package | Version |
-| benno-archive | 2.2.2 |
-| benno-core | 2.2.2 |
-| benno-lib | 2.2.2 |
-| benno-rest | 2.2.2 |
-| benno-rest-lib | 2.2.2 |
-| benno-smtp | 2.2.3 |
-| benno-web | 2.2.3-1 |
+| Package | Version | Description |
+|---------|---------|-------------|
+| benno-archive | 2.2.2 |  |
+| benno-core | 2.2.2 |  |
+| benno-lib | 2.2.2 |  |
+| benno-rest | 2.2.2 |  |
+| benno-rest-lib | 2.2.2 |  |
+| benno-smtp | 2.2.3 |  |
+| benno-web | 2.2.3-1 |  |
 
 # How to use this image
 

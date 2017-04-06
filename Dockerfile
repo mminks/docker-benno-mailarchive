@@ -26,7 +26,7 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN apt-get install -y benno-lib benno-core benno-archive benno-rest-lib benno-rest benno-smtp
 
-RUN apt-get install -y php5-sqlite php5-curl smarty php-db php-pear sqlite libdbi-perl libdbd-sqlite3-perl sqlite3 postfix
+RUN apt-get install -y php5-sqlite php5-curl smarty php-db php-pear sqlite libdbi-perl libdbd-sqlite3-perl sqlite3 postfix libnet-ldap-perl
 
 # avoid "invoke-rc.d: policy-rc.d denied execution of start."
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
@@ -34,7 +34,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 # fix reload apache error while configuring benno-web (because apache isn't running at that time)
 RUN apt-get download benno-web
 RUN dpkg --unpack benno-web_*.deb
-RUN sed -i '/\/etc\/init.d\/apache2 force-reload/d' /var/lib/dpkg/info/benno-web.postinst
+RUN sed -i '/invoke-rc.d apache2 force-reload/d' /var/lib/dpkg/info/benno-web.postinst
 RUN dpkg --configure benno-web
 
 RUN rm -Rf /etc/apache2/conf-available/benno.conf /etc/apache2/conf-enabled/benno.conf
