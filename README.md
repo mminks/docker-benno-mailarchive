@@ -98,7 +98,6 @@ docker run \
   -p 8080:80 \
   -p 2500:2500 \
   -e "MAIL_FROM=mailarchive@inoxio.de" \
-  -e "BENNO_ADMIN_PASSWORD=admin123" \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \
@@ -165,6 +164,16 @@ Access benno-web on port 8080 (or whereever you set it up to - see above) of you
 ```
 docker logs benno | grep "Benno's admin password"
 ```
+
+It is possible to specify a password for benno-web's initial admin account with:
+
+```
+  -e "BENNO_ADMIN_PASSWORD=admin123"
+```
+
+(see "Final startup")
+
+Be sure to use a random password or set a strong one when going live.
 
 # What's next?
 
