@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stable
 MAINTAINER Meik Minks <docbrown@datenschleuder.org>
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,15 +8,15 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV TZ=Europe/Berlin
 
 RUN apt-get update && \
-		apt-get install -y wget dialog
+		apt-get install -y wget dialog php-mbstring gnupg
 
 RUN wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc && \
 		apt-key add benno.asc && \
-		echo "deb http://www.benno-mailarchiv.de/download/debian /" >> /etc/apt/sources.list  && \
+		echo "deb http://www.benno-mailarchiv.de/download/debian /" >> /etc/apt/sources.list.d/benno-mailarchive.list  && \
 		rm -Rf benno.asc
 
 RUN apt-get update && \
-		apt-get -y install apache2 php5 php-pear php-db smarty && \
+		apt-get -y install apache2 php php-pear php-db smarty3 && \
 		apt-get autoremove --purge && \
 		apt-get clean && \
 		apt-get autoclean
@@ -24,9 +24,9 @@ RUN apt-get update && \
 RUN echo $TZ | tee /etc/timezone
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN apt-get install -y benno-lib benno-core benno-archive benno-rest-lib benno-rest benno-smtp
+RUN apt-get install -y benno-lib benno-core benno-archive benno-rest-lib benno-rest benno-smtp benno-imap
 
-RUN apt-get install -y php5-sqlite php5-curl smarty php-db php-pear sqlite libdbi-perl libdbd-sqlite3-perl sqlite3 postfix libnet-ldap-perl
+RUN apt-get install -y php-sqlite3 php-curl smarty3 php-db php-pear sqlite3 libdbi-perl libdbd-sqlite3-perl sqlite3 postfix libnet-ldap-perl
 
 # avoid "invoke-rc.d: policy-rc.d denied execution of start."
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
@@ -36,7 +36,7 @@ RUN apt-get download benno-web
 RUN dpkg --unpack benno-web_*.deb
 RUN sed -i '/invoke-rc.d apache2 force-reload/d' /var/lib/dpkg/info/benno-web.postinst
 RUN dpkg --configure benno-web
-
+# RUN dpkg update && dpkg install benno-web
 RUN rm -Rf /etc/apache2/conf-available/benno.conf /etc/apache2/conf-enabled/benno.conf
 RUN rm -Rf /etc/benno-web/apache-2.2.conf /etc/benno-web/apache-2.4.conf
 

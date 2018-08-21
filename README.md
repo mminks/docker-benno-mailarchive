@@ -8,13 +8,14 @@ This image runs [Benno MailArchiv](http://www.benno-mailarchiv.de/), an audit-pr
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| benno-archive | 2.2.2 | Benno MailArchiv Archiving Application |
-| benno-core | 2.2.2 | Benno MailArchiv Core |
-| benno-lib | 2.2.2 | Benno MailArchiv Core libraries from external sources |
-| benno-rest | 2.2.2 | Benno MailArchiv REST interface |
-| benno-rest-lib | 2.2.2 | Benno MailArchiv REST interface core libraries |
-| benno-smtp | 2.2.3 | Benno MailArchiv SMTP Interface |
-| benno-web | 2.2.3-1 | Benno MailArchiv web interface |
+| benno-archive | 2.6.1 | Benno MailArchiv Archiving Application |
+| benno-core | 2.6.1 | Benno MailArchiv Core |
+| benno-lib | 2.6.0 | Benno MailArchiv Core libraries from external sources |
+| benno-rest | 2.6.1 | Benno MailArchiv REST interface |
+| benno-rest-lib | 2.6.0 | Benno MailArchiv REST interface core libraries |
+| benno-smtp | 2.4.2 | Benno MailArchiv SMTP Interface |
+| benno-web | 2.6.1-1 | Benno MailArchiv web interface |
+| benno-imap | 2.6.0 | Benno MailArchiv imap connector |
 
 # How to use this image
 
@@ -97,6 +98,7 @@ docker run \
   -p 8080:80 \
   -p 2500:2500 \
   -e "MAIL_FROM=mailarchive@inoxio.de" \
+  -e "BENNO_ADMIN_PASSWORD=admin123" \
   -v /opt/benno/archive:/srv/benno/archive \
   -v /opt/benno/inbox:/srv/benno/inbox \
   -v /opt/benno/logs/benno:/var/log/benno \

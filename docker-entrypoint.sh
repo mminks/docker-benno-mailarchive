@@ -8,7 +8,9 @@ fi
 
 # generating secrets
 BENNO_SHARED_SECRET=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 32 | head -n 1)
-BENNO_ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 12 | head -n 1)
+if [[ -z "$BENNO_ADMIN_PASSWORD" ]]; then
+	BENNO_ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 12 | head -n 1)
+fi
 HOSTNAME=$(cat /etc/hostname)
 
 echo "Benno's SHARED_SECRET: $BENNO_SHARED_SECRET"
