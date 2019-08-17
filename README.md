@@ -8,14 +8,14 @@ This image runs [Benno MailArchiv](http://www.benno-mailarchiv.de/), an audit-pr
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| benno-archive | 2.6.1 | Benno MailArchiv Archiving Application |
-| benno-core | 2.6.1 | Benno MailArchiv Core |
-| benno-lib | 2.6.0 | Benno MailArchiv Core libraries from external sources |
-| benno-rest | 2.6.1 | Benno MailArchiv REST interface |
-| benno-rest-lib | 2.6.0 | Benno MailArchiv REST interface core libraries |
-| benno-smtp | 2.4.2 | Benno MailArchiv SMTP Interface |
-| benno-web | 2.6.1-1 | Benno MailArchiv web interface |
-| benno-imap | 2.6.0 | Benno MailArchiv imap connector |
+| benno-archive | 2.8.0 | Benno MailArchiv Archiving Application |
+| benno-core | 2.8.0 | Benno MailArchiv Core |
+| benno-lib | 2.8.0 | Benno MailArchiv Core libraries from external sources |
+| benno-rest | 2.8.0 | Benno MailArchiv REST interface |
+| benno-rest-lib | 2.8.0 | Benno MailArchiv REST interface core libraries |
+| benno-smtp | 2.6.0 | Benno MailArchiv SMTP Interface |
+| benno-web | 2.8.0 | Benno MailArchiv web interface |
+| benno-imap | 2.6.10 | Benno MailArchiv imap connector |
 
 # How to use this image
 
